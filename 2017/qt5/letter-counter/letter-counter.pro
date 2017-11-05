@@ -1,5 +1,5 @@
 TEMPLATE = app
-TARGET = app
+TARGET = letter-counter
 INCLUDEPATH += .
 
 # Input

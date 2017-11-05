@@ -1,3 +1,12 @@
+/**
+ * @author	Chianti Blaze
+ * @date	11/3/2017
+ * @section	DESCRIPTION
+ *
+ * Simple letter counter application.
+ *
+ */
+
 #include "letter-counter.h"
 #include <QApplication>
 

@@ -11,20 +11,20 @@ LetterCounter::LetterCounter(QWidget *parent) : QWidget(parent)
 {
 	/* components */
 	QTextEdit *textarea = new QTextEdit(this);
-	QLabel *total_words = new QLabel("0 words  ", this);
 	QLabel *total_letters = new QLabel("0 letters", this);
 	QLabel *empty_area = new QLabel("", this); /* for stretching */
+	
 
-
-	/* apply grid layout */
+	/* apply grid layout & alignment */
 	QGridLayout *grid = new QGridLayout(this);
 	
-	grid->addWidget(textarea, 0,0,1,100);
-	grid->addWidget(empty_area, 15,0,1,98);
-	grid->addWidget(total_words, 15,98,1,1);
-	grid->addWidget(total_letters, 15,99,1,1);
+	grid->addWidget(textarea, 0,0,1,5);
+	grid->addWidget(empty_area, 15,0,1,5);
+	grid->addWidget(total_letters, 15,4,1,1);
+	total_letters->setAlignment(Qt::AlignRight);
 
 	setLayout(grid);
+
 
 	/* connect counting functions */
 	connect(textarea, &QTextEdit::textChanged, this,[=](){
@@ -32,10 +32,10 @@ LetterCounter::LetterCounter(QWidget *parent) : QWidget(parent)
 
 		/* update counters */
 		string updated_letters = to_string(this->utf8_strlen(text))+" letters";
-
 		total_letters->setText(QString::fromStdString(updated_letters));
 	});
 }
+
 
 int LetterCounter::utf8_strlen(string text)
 {
